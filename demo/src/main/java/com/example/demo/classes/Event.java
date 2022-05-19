@@ -1,4 +1,4 @@
-package com.example.demo.data;
+package com.example.demo.classes;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import javax.persistence.CascadeType;

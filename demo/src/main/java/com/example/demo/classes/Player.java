@@ -1,4 +1,4 @@
-package com.example.demo.data;
+package com.example.demo.classes;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
