@@ -2,12 +2,14 @@ package com.example.demo.classes;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
@@ -28,10 +30,10 @@ public class Player {
     private String position;
     private Date birthDate;
 
-    @OneToMany(mappedBy="players")
+    @ManyToOne()
     private Team team;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "player")
     private List<Event> events;
 
     public Player(){}
@@ -41,6 +43,7 @@ public class Player {
         this.position = position;
         this.birthDate = birthDate;
         this.nGoals = 0;
+        this.events = new ArrayList<>();
     }
 
     public void addGoal(){

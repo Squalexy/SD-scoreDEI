@@ -2,9 +2,16 @@ package com.example.demo.classes;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import org.springframework.format.annotation.DateTimeFormat;
 import lombok.Getter;
@@ -15,6 +22,9 @@ import lombok.Setter;
 @Entity
 public class Game {
 
+    @Id @GeneratedValue(strategy = GenerationType.AUTO) 
+    private int id;
+
     private String localization;
     private int scoreA;
     private int scoreB;
@@ -22,10 +32,10 @@ public class Game {
     @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm:ss")
     private Date startDate;
 
-    private Team teamA;
-    private Team teamB;
+    @ManyToMany(mappedBy="games")
+    private List <Team> teams;
 
-    @OneToMany(mappedBy="game")
+    @OneToMany(mappedBy = "game")
     private List <Event> events;
 
     public Game(){}
@@ -33,16 +43,7 @@ public class Game {
     public Game(String localization, Timestamp startDate){
         this.localization = localization;
         this.startDate = startDate;
+        this.teams = new ArrayList<>();
+        this.events = new ArrayList<>();
     }
- 
-    @Override public String toString(){
-        String start = new SimpleDateFormat("dd/MM/yyyy HH:mm::ss").format(startDate);
-        return String.format("""
-                            %s vs %s%n
-                            Score: %s-%s%n
-                            Started: %s%n
-                            Localization: %s%n
-                            """, this.teamA, this.teamB, this.scoreA, this.scoreB, start, this.localization);
-    }
-
 }

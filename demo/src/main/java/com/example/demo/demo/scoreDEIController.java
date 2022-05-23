@@ -13,11 +13,6 @@ import com.example.demo.classes.Game;
 import com.example.demo.classes.Player;
 import com.example.demo.classes.Team;
 import com.example.demo.classes.User;
-import com.example.demo.services.EventService;
-import com.example.demo.services.GameService;
-import com.example.demo.services.PlayerService;
-import com.example.demo.services.TeamService;
-import com.example.demo.services.UserService;
 
 @Controller
 public class scoreDEIController {
@@ -41,6 +36,11 @@ public class scoreDEIController {
     @GetMapping("/")
     public String redirectIndex() {
         return "redirect:/index";
+    }
+
+    @GetMapping("/index")
+    public String index() {
+        return "index";
     }
 
 }

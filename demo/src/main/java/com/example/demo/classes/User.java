@@ -1,22 +1,31 @@
 package com.example.demo.classes;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.util.*;
+import javax.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
 public class User {
-
-    @Getter
-    @Setter
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private String username, password, email, telephone;
+    private String username;
+    private String password;
+    private String confirmPass;
+    private String email;
+    private String telephone;
     private boolean isAdmin;
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+            )
+    private Set<Role> roles = new HashSet<>();
 
     public User(){}
 
@@ -27,19 +36,4 @@ public class User {
         this.telephone = telephone;
         this.isAdmin = isAdmin;
     }
-
-    @Override public String toString(){
-
-        String type;
-        if (this.isAdmin) type = "Admin";
-        else type = "User";
-
-        return String.format("""
-                            Username: %s%n
-                            Email: %s%n
-                            Telephone: %s%n
-                            Type: %s%n
-                            """, this.username, this.email, this.telephone, type);
-    }
-
 }
