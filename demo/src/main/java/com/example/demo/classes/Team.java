@@ -20,6 +20,7 @@ public class Team {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String name, imageLink;
+    
     @OneToMany(cascade = CascadeType.ALL)
     private List <Player> players;
 
@@ -30,14 +31,4 @@ public class Team {
         this.imageLink = imageLink;
         this.players = new ArrayList<>();
     }
- 
-
-    @Override public String toString(){
-        String playersList = this.players.toString();
-        return String.format("""
-                            Team: %s%n
-                            Players: %s%n
-                            """, this.name, playersList);
-    }
-
 }

@@ -2,24 +2,29 @@ package com.example.demo.classes;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import org.springframework.format.annotation.DateTimeFormat;
 import lombok.Getter;
 import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 public class Game {
-
-    @Getter
-    @Setter
 
     private String localization;
     private int scoreA;
     private int scoreB;
-    private Timestamp startDate;
+
+    @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm:ss")
+    private Date startDate;
+
     private Team teamA;
     private Team teamB;
+
     @OneToMany(mappedBy="game")
     private List <Event> events;
 

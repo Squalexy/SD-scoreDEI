@@ -12,18 +12,25 @@ import javax.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
 
+
+@Getter
+@Setter
 @Entity
 public class Player {
 
-    @Getter
-    @Setter
+    @Id @GeneratedValue(strategy = GenerationType.AUTO) 
+    private int id;
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id, nGoals, nYellow, nRed;
-    private String name, position;
+    private int nGoals;
+    private int nYellow;
+    private int nRed;
+    private String name;
+    private String position;
     private Date birthDate;
+
     @OneToMany(mappedBy="players")
     private Team team;
+
     @OneToMany(cascade = CascadeType.ALL)
     private List<Event> events;
 
@@ -39,17 +46,4 @@ public class Player {
     public void addGoal(){
         this.nGoals += 1;
     }
- 
-    @Override public String toString(){
-        String s = new SimpleDateFormat("dd/MM/yyyy HH:mm::ss").format(birthDate);
-        return String.format("""
-                            Player: %s%n
-                            Position: %s%n
-                            Birth date: %s%n
-                            Total number of goals: %s%n
-                            Total number of yellow cards: %s%n
-                            Total number of red cards: %s%n
-                            """, this.name, this.position, s, this.nGoals, this.nYellow, this.nRed);
-    }
-
 }

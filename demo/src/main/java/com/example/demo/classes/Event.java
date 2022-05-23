@@ -1,29 +1,40 @@
 package com.example.demo.classes;
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 import lombok.Getter;
 import lombok.Setter;
+import java.util.Date;
 
+@Getter
+@Setter
 @Entity
 public class Event {
 
-    @Getter
-    @Setter
-
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
     private String name;
-    private Timestamp startEvent;
-    private Timestamp endEvent;
-    @OneToMany(cascade = CascadeType.ALL)
-    private Game game;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm:ss")
+    private Date startEvent;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm:ss")
+    private Date endEvent;
+
     @OneToMany(mappedBy = "events")
+    private Game game;
+
+    @OneToMany(mappedBy="events")
     private Player player;
 
     public Event(){}
@@ -47,23 +58,4 @@ public class Event {
         this.name = name;
         this.startEvent = startEvent;
     }
- 
-    public String toString(){
-
-        String start = new SimpleDateFormat("dd/MM/yyyy HH:mm::ss").format(this.startEvent);
-        String end = new SimpleDateFormat("dd/MM/yyyy HH:mm::ss").format(this.endEvent);
-
-        switch (this.name){
-            case "a": return String.format("Begins: %s%nEnds: %s%n", start, end);
-            case "b": return String.format("[%s] Player %s scored a goal!", start, this.player);
-            case "c": return String.format("[%s]Player %s got a yellow card!", start, this.player);
-            case "d": return String.format("[%s]Player %s got a red card!", start, this.player);
-            case "e": return String.format("[%s]Game paused!", start);
-            case "f": return String.format("[%s]Game resumed!", start); 
-            default: return "error switch case";
-        }
-
-        
-    }
-
 }
