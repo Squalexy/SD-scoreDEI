@@ -55,7 +55,7 @@ public class MyUserDetails implements UserDetails {
  
     @Override
     public boolean isEnabled() {
-        return user.isAdmin();
+        return true;
     }
     
 }

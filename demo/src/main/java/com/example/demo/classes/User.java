@@ -8,23 +8,26 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Table(name = "users")
 public class User {
 
+    @Column(name = "id")
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String username;
     private String password;
-    private String confirmPass;
     private String email;
     private String telephone;
     private boolean isAdmin;
 
+    
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
             name = "users_roles",
-            joinColumns = @JoinColumn(name = "user_id"),
+            joinColumns = @JoinColumn(name = "id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
             )
+            
     private Set<Role> roles = new HashSet<>();
 
     public User(){}
