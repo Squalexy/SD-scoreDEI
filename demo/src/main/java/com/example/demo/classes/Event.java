@@ -41,21 +41,21 @@ public class Event {
     public Event(){}
 
     // (a) start and end game
-    public Event(String name, Timestamp startEvent, Timestamp endEvent){
+    public Event(String name, Date startEvent, Date endEvent){
         this.name = name;
         this.startEvent = startEvent;
         this.endEvent = endEvent;
     }
 
     // (b), (c) and (d) goals and cards
-    public Event(String name, Timestamp startEvent, Player player){
+    public Event(String name, Date startEvent, Player player){
         this.name = name;
         this.startEvent = startEvent;
         this.player = player;
     }
 
     // (e) and (f)
-    public Event(String name, Timestamp startEvent){
+    public Event(String name, Date startEvent){
         this.name = name;
         this.startEvent = startEvent;
     }

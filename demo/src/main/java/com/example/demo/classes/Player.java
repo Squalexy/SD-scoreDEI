@@ -1,6 +1,6 @@
 package com.example.demo.classes;
 
-import java.sql.Date;
+import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +46,13 @@ public class Player {
         this.events = new ArrayList<>();
     }
 
-    public void addGoal(){
-        this.nGoals += 1;
+    public void addEvent(Event event){
+
+        this.events.add(event);
+
+        if (event.getName() == "b") this.nGoals += 1;
+        else if (event.getName() == "c") this.nYellow += 1;
+        else if (event.getName() == "d") this.nRed += 1;
+
     }
 }

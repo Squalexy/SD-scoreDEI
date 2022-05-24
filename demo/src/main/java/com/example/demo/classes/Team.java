@@ -13,7 +13,11 @@ public class Team {
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private String name, imageLink;
+
+    @Column(unique = true)
+    private String name;
+    
+    private String imageLink;
     
     @OneToMany(cascade = CascadeType.ALL)
     private List <Player> players;
@@ -23,10 +27,20 @@ public class Team {
 
     public Team(){}
 
+    public Team(String name){
+        this.name = name;
+        this.players = new ArrayList<>();
+        this.games = new ArrayList<>();
+    }
+
     public Team(String name, String imageLink){
         this.name = name;
         this.imageLink = imageLink;
         this.players = new ArrayList<>();
         this.games = new ArrayList<>();
+    }
+
+    public void addPlayer(Player player){
+        this.players.add(player);
     }
 }

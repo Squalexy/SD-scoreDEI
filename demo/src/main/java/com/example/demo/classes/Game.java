@@ -40,10 +40,18 @@ public class Game {
 
     public Game(){}
 
-    public Game(String localization, Timestamp startDate){
+    public Game(String localization, Date startDate){
         this.localization = localization;
         this.startDate = startDate;
-        this.teams = new ArrayList<>();
         this.events = new ArrayList<>();
+        this.teams = new ArrayList<>();
+    }
+
+    public void addEvent(Event event){
+        this.events.add(event);
+    }
+
+    public void addTeam(Team team){
+        this.teams.add(team);
     }
 }

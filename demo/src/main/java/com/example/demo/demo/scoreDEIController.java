@@ -16,6 +16,7 @@ import com.example.demo.classes.Game;
 import com.example.demo.classes.Player;
 import com.example.demo.classes.Team;
 import com.example.demo.classes.User;
+import com.example.demo.classes.Role;
 import com.example.demo.repositories.UserRepository;
 
 @Controller
@@ -31,14 +32,6 @@ public class scoreDEIController {
     TeamService teamService;
     @Autowired
     UserService userService;
-
-    @Autowired 
-    private UserRepository userRepository;
-
-    @GetMapping("")
-    public String viewIndex() {
-        return "index";
-    }
 
     @GetMapping("/")
     public String redirectIndex() {
@@ -61,16 +54,8 @@ public class scoreDEIController {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
-        userRepository.save(user);
+        userService.addUser(user);
         return "register_success";   
-    }
-
-    @GetMapping("/users")
-    public String listUsers(Model model) {
-        List<User> listUsers = new ArrayList<>();
-        userRepository.findAll().forEach(listUsers::add);
-        model.addAttribute("listUsers", listUsers);
-        return "users";
     }
 
     @GetMapping("/logout")
@@ -78,6 +63,38 @@ public class scoreDEIController {
         return "redirect:/index";
     }
 
+    @GetMapping("/users")
+    public String listUsers(Model model) {
+        List <User> listUsers = userService.getAllUsers();
+        model.addAttribute("listUsers", listUsers);
+        return "users_list";
+    }
 
+    @GetMapping("/teams")
+    public String listTeams(Model model) {
+        List <Team> listTeams = teamService.getAllTeams();
+        model.addAttribute("listTeams", listTeams);
+        return "teams_list";
+    }
 
+    @GetMapping("/games")
+    public String listGames(Model model) {
+        List <Game> listGames = gameService.getAllGames();
+        model.addAttribute("listGames", listGames);
+        return "games_list";
+    }
+
+    @GetMapping("/players")
+    public String listPlayers(Model model) {
+        List <Player> listPlayers = playerService.getAllPlayers();
+        model.addAttribute("listPlayer", listPlayers);
+        return "players_list";
+    }
+
+    @GetMapping("/events")
+    public String listEvents(Model model) {
+        List <Event> listEvents = eventService.getAllEvents();
+        model.addAttribute("listEvents", listEvents);
+        return "events_list";
+    }
 }

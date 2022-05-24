@@ -14,12 +14,17 @@ public class User {
     @Column(name = "id")
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private String username;
-    private String password;
-    private String email;
-    private String telephone;
-    private boolean isAdmin;
 
+    @Column(unique = true)
+    private String username;
+
+    private String password;
+
+    @Column(unique = true)
+    private String email;
+
+    @Column(unique = true)
+    private String telephone;
     
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
@@ -32,11 +37,14 @@ public class User {
 
     public User(){}
 
-    public User(String username, String password, String email, String telephone, boolean isAdmin){
+    public User(String username, String password, String email, String telephone){
         this.username = username;
         this.password = password;
         this.email = email;
         this.telephone = telephone;
-        this.isAdmin = isAdmin;
+    }
+
+    public void addRole(Role role){
+        this.roles.add(role);
     }
 }
