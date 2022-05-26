@@ -1,4 +1,4 @@
-package com.example.demo.classes;
+package com.example.demo.entities;
 
 import java.util.Date;
 import java.text.SimpleDateFormat;
@@ -55,4 +55,5 @@ public class Player {
         else if (event.getName() == "d") this.nRed += 1;
 
     }
+
 }

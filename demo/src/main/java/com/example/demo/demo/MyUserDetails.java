@@ -1,12 +1,12 @@
 package com.example.demo.demo;
 
 import java.util.*;
-import com.example.demo.classes.User;
-import com.example.demo.classes.Role;
- 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import com.example.demo.entities.Role;
+import com.example.demo.entities.User;
 
 public class MyUserDetails implements UserDetails {
 

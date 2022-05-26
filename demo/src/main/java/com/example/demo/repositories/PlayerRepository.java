@@ -1,9 +1,9 @@
 package com.example.demo.repositories;
 
+import com.example.demo.entities.Player;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-
-import com.example.demo.classes.Player;
 
 public interface PlayerRepository extends CrudRepository<Player, Integer> {
 }    

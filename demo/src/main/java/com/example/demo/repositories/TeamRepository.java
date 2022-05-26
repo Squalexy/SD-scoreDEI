@@ -1,9 +1,8 @@
 package com.example.demo.repositories;
 
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
+import com.example.demo.entities.Team;
 
-import com.example.demo.classes.Team;
+import org.springframework.data.repository.CrudRepository;
 
 public interface TeamRepository extends CrudRepository<Team, Integer> {
 }    

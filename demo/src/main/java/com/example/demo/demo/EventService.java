@@ -1,14 +1,11 @@
 package com.example.demo.demo;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
-import com.example.demo.classes.Event;
-import com.example.demo.repositories.EventRepository;
-
+import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.example.demo.entities.Event;
+import com.example.demo.repositories.EventRepository;
 
 @Service   
 public class EventService {

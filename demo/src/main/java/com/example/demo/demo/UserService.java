@@ -1,20 +1,21 @@
 package com.example.demo.demo;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
-import com.example.demo.classes.User;
-import com.example.demo.repositories.UserRepository;
-
+import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.example.demo.repositories.UserRepository;
+import com.example.demo.entities.Role;
+import com.example.demo.entities.User;
+import com.example.demo.repositories.RoleRepository;
 
 @Service   
 public class UserService {
 
     @Autowired    
     private UserRepository userRepository;
+
+    @Autowired RoleRepository roleRepository;
 
     public List <User> getAllUsers(){
         List <User> userRecords = new ArrayList<>();
@@ -27,8 +28,27 @@ public class UserService {
         userRepository.save(user);    
     }
 
-    public Optional<User> getUser(int id) {
-        return userRepository.findById(id);
+
+    public void registerDefaultUser(User user){
+        Role roleUser = roleRepository.getUserRole();
+        user.addRole(roleUser);
+        userRepository.save(user);
+    }
+    
+    /*
+    public List<Role> listRoles() {
+        List <Role> listRoles = new ArrayList<>();
+        roleRepository.findAll().forEach(listRoles::add);
+        return listRoles;
+    }
+    */
+
+    public User get(Integer id) {
+        return userRepository.findById(id).get();
+    }
+
+    public List<Role> listRoles() {
+        return (List<Role>) roleRepository.findAll();
     }
     
 }

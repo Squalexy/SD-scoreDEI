@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>List Games</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <div th:replace="navbar :: navbar"></div>
+
+<div class="container text-center">
+
+    <div>
+        <h1>List of Games</h1>
+    </div>
+     
+    <div>
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Game</th>
+                    <th>Result</th>
+                    <th>Location</th>
+                    <th>Starts</th>
+                    <th>Events</th>
+                    <th>State</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="game: ${listGames}">
+                    <td> <span th:text="${game.teams[0].name}">team1</span> vs <span th:text="${game.teams[1].name}">team2</span></td>
+                    <td th:text="${game.scoreA} + '-' + ${game.scoreB}"></td>
+                    <td th:text="${game.localization}">Location</td>
+                    <td th:text="${game.startDate}">Starts</td>
+                    <td> <a th:href="@{game/events(id=${game.id})}">Events</a> </td>
+                    <td th:text="${game.state}">State</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

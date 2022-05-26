@@ -1,6 +1,8 @@
-package com.example.demo.classes;
+package com.example.demo.entities;
  
 import javax.persistence.*;
+
+import org.hibernate.annotations.FetchProfile.FetchOverride;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -25,5 +27,10 @@ public class Role {
 
     public Integer getId() {
         return id;
+    }
+
+    @Override
+    public String toString(){
+        return "" + this.name;
     }
 }

@@ -1,14 +1,11 @@
 package com.example.demo.demo;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
-import com.example.demo.classes.Team;
-import com.example.demo.repositories.TeamRepository;
-
+import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.example.demo.entities.Team;
+import com.example.demo.repositories.TeamRepository;
 
 @Service   
 public class TeamService {

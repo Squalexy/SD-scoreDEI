@@ -1,4 +1,4 @@
-package com.example.demo.classes;
+package com.example.demo.entities;
 
 import java.util.*;
 import javax.persistence.*;
@@ -46,5 +46,9 @@ public class User {
 
     public void addRole(Role role){
         this.roles.add(role);
+    }
+
+    public void showRoles(){
+        for (Role r: this.roles) System.out.println(r);
     }
 }

@@ -1,14 +1,11 @@
 package com.example.demo.demo;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
-import com.example.demo.classes.Game;
-import com.example.demo.repositories.GameRepository;
-
+import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.example.demo.entities.Game;
+import com.example.demo.repositories.GameRepository;
 
 @Service   
 public class GameService {

@@ -1,4 +1,4 @@
-package com.example.demo.classes;
+package com.example.demo.entities;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -38,11 +38,21 @@ public class Game {
     @OneToMany(mappedBy = "game")
     private List <Event> events;
 
+    private String state;
+
     public Game(){}
 
     public Game(String localization, Date startDate){
         this.localization = localization;
         this.startDate = startDate;
+        this.events = new ArrayList<>();
+        this.teams = new ArrayList<>();
+    }
+
+    public Game(String localization, Date startDate, String state){
+        this.localization = localization;
+        this.startDate = startDate;
+        this.state = state;
         this.events = new ArrayList<>();
         this.teams = new ArrayList<>();
     }
@@ -53,5 +63,9 @@ public class Game {
 
     public void addTeam(Team team){
         this.teams.add(team);
+    }
+
+    public String getGameName(){
+        return "" + this.teams.get(0) + " vs " + this.teams.get(1);
     }
 }

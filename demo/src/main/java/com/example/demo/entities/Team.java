@@ -1,4 +1,4 @@
-package com.example.demo.classes;
+package com.example.demo.entities;
 
 import javax.persistence.*;
 import lombok.Getter;
@@ -42,5 +42,9 @@ public class Team {
 
     public void addPlayer(Player player){
         this.players.add(player);
+    }
+
+    public void addGame(Game game){
+        this.games.add(game);
     }
 }

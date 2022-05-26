@@ -1,30 +1,27 @@
-package com.example.demo.demo;
+package com.example.demo.demo.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import com.example.demo.classes.Event;
-import com.example.demo.classes.Game;
-import com.example.demo.classes.Player;
-import com.example.demo.classes.Team;
-import com.example.demo.classes.User;
-import com.example.demo.classes.Role;
-import com.example.demo.repositories.UserRepository;
+
+import com.example.demo.demo.EventService;
+import com.example.demo.demo.GameService;
+import com.example.demo.demo.PlayerService;
+import com.example.demo.demo.TeamService;
+import com.example.demo.demo.UserService;
+import com.example.demo.entities.Event;
+import com.example.demo.entities.Game;
+import com.example.demo.entities.Player;
+import com.example.demo.entities.Role;
+import com.example.demo.entities.Team;
+import com.example.demo.entities.User;
 
 @Controller
-public class dummyDataController {
+public class controllerDummyData {
 
     @Autowired
     EventService eventService;
@@ -51,11 +48,11 @@ public class dummyDataController {
         };
 
         User[] myusers = {
-                new User("squelele", "sql1", "sql1@gmail.com", "966694080"),
-                new User("squelele2", "sql2", "sql2@gmail.com", "966694081"),
-                new User("squelele3", "sql3", "sql3@gmail.com", "966694082"),
-                new User("IloveSD", "ola", "sql4@gmail.com", "966694083"),
-                new User("IdontloveSD", "adeus", "sql5@gmail.com", "966694084"),
+                new User("squalexy", "$2a$10$MaTB2H4OiGsS6Z.13dMBlOO2ot5o5oRrtMFQ0x5UkfRnNdlRqIC7q", "alexx.da95@gmail.com", "966694082"),
+                new User("squalexy2", "$2a$10$u1XjTAxm8.3/jK/jSod3/eL2hr7ltpnnjsiNQuoRF9d9SUlzM08OG", "sql2@gmail.com", "966694081"),
+                new User("squelele", "$2a$10$O2flXuCf2JY42WR/gMfhy.QKO7s7gEkeyAiMdU.KpMA7wQnRva3ay", "sql3@gmail.com", "966694085"),
+                new User("IloveSD", "$2a$10$RMhOJwAEfF7pw/M2/Bhd2O8QKM5rZZoNv4D1ReKxnoYCA63/TSlk6", "sql4@gmail.com", "966694083"),
+                new User("IdontloveSD", "$2a$10$tpJM6uCOTaF62nZRD5Ys3eWNJciOD4VRi8RenPq1EVwycPvizWLfu", "sql5@gmail.com", "966694084"),
         };
 
 
@@ -99,9 +96,9 @@ public class dummyDataController {
         };
 
         Game[] mygames = {
-                new Game("Portugal", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2022-06-05 10:00:00")),
-                new Game("France", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2022-06-10 12:30:00")),
-                new Game("Germany", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2022-07-15 15:30:00"))
+                new Game("Portugal", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2022-06-05 10:00:00"), "to be played"),
+                new Game("France", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2022-06-10 12:30:00"), "to be played"),
+                new Game("Germany", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2022-07-15 15:30:00"), "to be played")
             };
 
         Event[] myevents = {
@@ -132,10 +129,10 @@ public class dummyDataController {
             new Event("f", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2022-06-05 11:00:00")),
         };
 
-        myusers[0].addRole(myroles[0]);
+        myusers[0].addRole(myroles[1]);
         myusers[1].addRole(myroles[0]);
         myusers[2].addRole(myroles[0]);
-        myusers[3].addRole(myroles[1]);
+        myusers[3].addRole(myroles[0]);
         myusers[4].addRole(myroles[0]);
 
         myplayers[0].addEvent(myevents[0]);
@@ -178,6 +175,30 @@ public class dummyDataController {
         myteams[1].addPlayer(myplayers[20]);
         myteams[1].addPlayer(myplayers[21]);
 
+        myplayers[0].setTeam(myteams[0]);
+        myplayers[1].setTeam(myteams[0]);
+        myplayers[2].setTeam(myteams[0]);
+        myplayers[3].setTeam(myteams[0]);
+        myplayers[4].setTeam(myteams[0]);
+        myplayers[5].setTeam(myteams[0]);
+        myplayers[6].setTeam(myteams[0]);
+        myplayers[7].setTeam(myteams[0]);
+        myplayers[8].setTeam(myteams[0]);
+        myplayers[9].setTeam(myteams[0]);
+        myplayers[10].setTeam(myteams[0]);
+
+        myplayers[11].setTeam(myteams[1]);
+        myplayers[12].setTeam(myteams[1]);
+        myplayers[13].setTeam(myteams[1]);
+        myplayers[14].setTeam(myteams[1]);
+        myplayers[15].setTeam(myteams[1]);
+        myplayers[16].setTeam(myteams[1]);
+        myplayers[17].setTeam(myteams[1]);
+        myplayers[18].setTeam(myteams[1]);
+        myplayers[19].setTeam(myteams[1]);
+        myplayers[20].setTeam(myteams[1]);
+        myplayers[21].setTeam(myteams[1]);
+
         mygames[0].addEvent(myevents[0]);
         mygames[0].addEvent(myevents[1]);
         mygames[0].addEvent(myevents[2]);
@@ -200,6 +221,18 @@ public class dummyDataController {
 
         mygames[0].addTeam(myteams[0]);
         mygames[0].addTeam(myteams[1]);
+        mygames[1].addTeam(myteams[1]);
+        mygames[1].addTeam(myteams[0]);
+        mygames[2].addTeam(myteams[0]);
+        mygames[2].addTeam(myteams[1]);
+
+        myteams[0].addGame(mygames[0]);
+        myteams[1].addGame(mygames[0]);
+        myteams[0].addGame(mygames[1]);
+        myteams[1].addGame(mygames[1]);
+        myteams[0].addGame(mygames[2]);
+        myteams[1].addGame(mygames[2]);
+
 
         for (User s: myusers){
             this.userService.addUser(s);

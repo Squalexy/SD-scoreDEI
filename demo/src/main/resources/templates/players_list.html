@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>List Players</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <div th:replace="navbar :: navbar"></div>
+
+<div class="container text-center">
+
+    <h1>List of Players</h1>
+
+    <div>
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Birthday</th>
+                    <th>Goals</th>
+                    <th>Yellow cards</th>
+                    <th>Red cards</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="player: ${listPlayers}">
+                    <td th:text="${player.name}"></td>
+                    <td th:text="${player.position}"></td>
+                    <td th:text="${player.birthDate}"></td>
+                    <td th:text="${player.nGoals}"></td>
+                    <td th:text="${player.nYellow}"></td>
+                    <td th:text="${player.nRed}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

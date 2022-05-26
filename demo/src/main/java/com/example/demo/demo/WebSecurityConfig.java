@@ -44,21 +44,25 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/").permitAll()
-                .antMatchers("/users").authenticated()
-                .antMatchers("/saveData").permitAll()
-                .antMatchers("/createData").permitAll()
-                .antMatchers("/register").permitAll()
-                .antMatchers("/index").permitAll()
-                .antMatchers("/new").hasAnyAuthority("ADMIN", "CREATOR")
-                .antMatchers("/edit/**").hasAnyAuthority("ADMIN", "EDITOR")
-                .antMatchers("/delete/**").hasAuthority("ADMIN")
+                .antMatchers("/",
+                        "/createData",
+                        "/saveData",
+                        "/index",
+                        "/register",
+                        "/games")
+                .permitAll()
+                .antMatchers("/manage",
+                        "/players",
+                        "/teams",
+                        "/editUser",
+                        "editUser(id=${user.id})")
+                .hasAuthority("ADMIN")
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
-                    .usernameParameter("username")
-                    .defaultSuccessUrl("/index")
-                    .permitAll()
+                .usernameParameter("username")
+                .defaultSuccessUrl("/index")
+                .permitAll()
                 .and()
                 .logout().logoutSuccessUrl("/").permitAll()
                 .and()
