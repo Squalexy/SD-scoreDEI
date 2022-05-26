@@ -135,21 +135,21 @@ public class controllerDummyData {
         myusers[3].addRole(myroles[0]);
         myusers[4].addRole(myroles[0]);
 
-        myplayers[0].addEvent(myevents[0]);
-        myplayers[0].addEvent(myevents[1]);
-        myplayers[1].addEvent(myevents[2]);
-        myplayers[5].addEvent(myevents[4]);
-        myplayers[7].addEvent(myevents[5]);
-        myplayers[0].addEvent(myevents[6]);
-        myplayers[11].addEvent(myevents[7]);
-        myplayers[0].addEvent(myevents[8]);
-        myplayers[13].addEvent(myevents[9]);
-        myplayers[11].addEvent(myevents[10]);
-        myplayers[0].addEvent(myevents[11]);
-        myplayers[5].addEvent(myevents[12]);
-        myplayers[9].addEvent(myevents[13]);
-        myplayers[5].addEvent(myevents[14]);
-        myplayers[14].addEvent(myevents[15]);
+        myplayers[0].addEvent(myevents[2]);
+        myplayers[0].addEvent(myevents[3]);
+        myplayers[1].addEvent(myevents[4]);
+        myplayers[4].addEvent(myevents[5]);
+        myplayers[7].addEvent(myevents[6]);
+        myplayers[0].addEvent(myevents[7]);
+        myplayers[11].addEvent(myevents[8]);
+        myplayers[0].addEvent(myevents[9]);
+        myplayers[13].addEvent(myevents[10]);
+        myplayers[11].addEvent(myevents[11]);
+        myplayers[0].addEvent(myevents[12]);
+        myplayers[5].addEvent(myevents[13]);
+        myplayers[9].addEvent(myevents[14]);
+        myplayers[5].addEvent(myevents[15]);
+        myplayers[14].addEvent(myevents[16]);
 
         myteams[0].addPlayer(myplayers[0]);
         myteams[0].addPlayer(myplayers[1]);
@@ -200,7 +200,7 @@ public class controllerDummyData {
         myplayers[21].setTeam(myteams[1]);
 
         mygames[0].addEvent(myevents[0]);
-        mygames[0].addEvent(myevents[1]);
+        mygames[1].addEvent(myevents[1]);
         mygames[0].addEvent(myevents[2]);
         mygames[0].addEvent(myevents[3]);
         mygames[0].addEvent(myevents[4]);
@@ -219,12 +219,35 @@ public class controllerDummyData {
         mygames[0].addEvent(myevents[17]);
         mygames[0].addEvent(myevents[18]);
 
+        myevents[0].setGame(mygames[0]);
+        myevents[1].setGame(mygames[1]);
+        myevents[2].setGame(mygames[0]);
+        myevents[3].setGame(mygames[0]);
+        myevents[4].setGame(mygames[0]);
+        myevents[5].setGame(mygames[0]);
+        myevents[6].setGame(mygames[0]);
+        myevents[7].setGame(mygames[0]);
+        myevents[8].setGame(mygames[0]);
+        myevents[9].setGame(mygames[0]);
+        myevents[10].setGame(mygames[0]);
+        myevents[11].setGame(mygames[0]);
+        myevents[12].setGame(mygames[0]);
+        myevents[13].setGame(mygames[0]);
+        myevents[14].setGame(mygames[0]);
+        myevents[15].setGame(mygames[0]);
+        myevents[16].setGame(mygames[0]);
+        myevents[17].setGame(mygames[0]);
+        myevents[18].setGame(mygames[0]);
+
         mygames[0].addTeam(myteams[0]);
         mygames[0].addTeam(myteams[1]);
         mygames[1].addTeam(myteams[1]);
         mygames[1].addTeam(myteams[0]);
         mygames[2].addTeam(myteams[0]);
         mygames[2].addTeam(myteams[1]);
+
+        mygames[0].setScoreA(8); 
+        mygames[0].setScoreB(3); 
 
         myteams[0].addGame(mygames[0]);
         myteams[1].addGame(mygames[0]);
@@ -248,6 +271,10 @@ public class controllerDummyData {
 
         for (Player p: myplayers){
             this.playerService.addPlayer(p);
+        }
+
+        for (Event e: myevents){
+            this.eventService.addEvent(e);
         }
 
         return "redirect:/index";

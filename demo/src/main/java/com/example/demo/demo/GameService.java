@@ -27,5 +27,10 @@ public class GameService {
     public Optional<Game> getGame(int id) {
         return gameRepository.findById(id);
     }
+
+    public Game get(Integer id) {
+        return gameRepository.findById(id).get();
+    }
+
     
 }

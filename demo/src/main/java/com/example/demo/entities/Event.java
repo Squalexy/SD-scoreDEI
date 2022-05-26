@@ -1,15 +1,9 @@
 package com.example.demo.entities;
-import java.sql.Timestamp;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-import org.springframework.format.annotation.DateTimeFormat;
 import lombok.Getter;
 import lombok.Setter;
 import java.util.Date;
@@ -23,13 +17,10 @@ public class Event {
     private int id;
 
     private String name;
+    private String description = "";
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm:ss")
     private Date startEvent;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm:ss")
     private Date endEvent;
 
     @ManyToOne()
@@ -45,6 +36,7 @@ public class Event {
         this.name = name;
         this.startEvent = startEvent;
         this.endEvent = endEvent;
+        this.description = String.format("[%s] Start: %s --- Ends: %s", this.startEvent, this.startEvent, this.endEvent);
     }
 
     // (b), (c) and (d) goals and cards
@@ -52,11 +44,22 @@ public class Event {
         this.name = name;
         this.startEvent = startEvent;
         this.player = player;
+
+        if (this.name == "b") this.description = String.format("[%s] Player %s scored a goal!", this.startEvent, this.player.getName());
+        else if (this.name == "c")this.description = String.format("[%s] Player %s received a yellow card!", this.startEvent, this.player.getName());
+        else if (this.name == "d")this.description = String.format("[%s] Player %s received a red card!", this.startEvent, this.player.getName());
+        
     }
 
     // (e) and (f)
     public Event(String name, Date startEvent){
         this.name = name;
         this.startEvent = startEvent;
+
+        if (this.name == "e") this.description = String.format("[%s] Game paused.", this.startEvent);
+        else if (this.name == "f") this.description = String.format("[%s] Game resumed.", this.startEvent);
+    
     }
+
+
 }

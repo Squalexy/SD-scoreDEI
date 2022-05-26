@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.demo.EventService;
 import com.example.demo.demo.GameService;
@@ -61,11 +63,14 @@ public class controllerMain {
         return "players_list";
     }
 
-    @GetMapping("/events")
-    public String listEvents(Model model) {
-        List <Event> listEvents = eventService.getAllEvents();
-        model.addAttribute("listEvents", listEvents);
-        return "events_list";
+    @GetMapping("/games/events")
+    public String viewEevents(@RequestParam(name="id", required=true) int id, Model m){
+        Optional <Game> ga = this.gameService.getGame(id);
+        if (ga.isPresent()){
+            m.addAttribute("events", ga.get().getEvents());
+            m.addAttribute("id", id);
+            return "events_list";
+        }
+        return "redirect:/games_list";
     }
-
 }

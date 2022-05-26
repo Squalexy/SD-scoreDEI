@@ -49,7 +49,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/saveData",
                         "/index",
                         "/register",
-                        "/games")
+                        "/games",
+                        "/games/events",
+                        "/games/events/{id}")
                 .permitAll()
                 .antMatchers("/manage",
                         "/players",

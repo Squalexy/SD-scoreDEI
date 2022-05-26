@@ -68,4 +68,5 @@ public class Game {
     public String getGameName(){
         return "" + this.teams.get(0) + " vs " + this.teams.get(1);
     }
+
 }

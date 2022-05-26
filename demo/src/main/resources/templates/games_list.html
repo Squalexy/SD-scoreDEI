@@ -35,7 +35,7 @@
                     <td th:text="${game.scoreA} + '-' + ${game.scoreB}"></td>
                     <td th:text="${game.localization}">Location</td>
                     <td th:text="${game.startDate}">Starts</td>
-                    <td> <a th:href="@{game/events(id=${game.id})}">Events</a> </td>
+                    <td> <a th:href="@{games/events(id=${game.id})}">Events</a> </td>
                     <td th:text="${game.state}">State</td>
                 </tr>
             </tbody>
