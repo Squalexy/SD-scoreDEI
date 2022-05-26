@@ -16,6 +16,12 @@
     <div>
         <h1>List of Games</h1>
     </div>
+
+    <div sec:authorize="hasAnyAuthority('ADMIN')">
+        <p>
+            <a href="/registerGame" th:href="@{/registerGame}" class="btn btn-large btn-success">New game</a>
+        </p>
+    </div>
      
     <div>
         <table class="table table-striped table-bordered">

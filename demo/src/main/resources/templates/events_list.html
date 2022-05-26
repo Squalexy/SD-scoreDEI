@@ -22,7 +22,11 @@
 
       <h1>List of Events</h1>
 
-      <td><a th:href="@{viewGames/addEvent(id=${id})}">Add Event</a></td>
+      <div sec:authorize="hasAnyAuthority('ADMIN', 'USER')">
+        <td><p><a th:href="@{viewGames/addEvent(id=${id})}" class="btn btn-large btn-success">Add Event</a></p></td>
+      </div>
+
+
 
       <div>
 
