@@ -15,7 +15,7 @@ public class GameService {
 
     public List <Game> getAllGames(){
         List <Game> gameRecords = new ArrayList<>();
-        gameRepository.findAll().forEach(gameRecords::add);
+        gameRepository.retriveGames().forEach(gameRecords::add);
         return gameRecords;
     }
 
@@ -31,6 +31,12 @@ public class GameService {
     public Game get(Integer id) {
         return gameRepository.findById(id).get();
     }
+
+    public void deleteGame(Game game){
+        gameRepository.delete(game);
+    }
+
+    
 
     
 }

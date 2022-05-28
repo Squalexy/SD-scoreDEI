@@ -33,20 +33,20 @@ public class controllerTeam {
     public String listTeams(Model model) {
         List <Team> listTeams = teamService.getAllTeams();
         model.addAttribute("listTeams", listTeams);
-        return "teams_list";
+        return "list_teams";
     }
 
     @GetMapping("/registerTeam")
     public String registrationTeamForm(Model model){
         model.addAttribute("team", new Team());
-        return "new_team_form";
+        return "form_team";
     }
 
     @GetMapping("/teams/edit/{id}")
     public String editTeam(@PathVariable("id") Integer id, Model model) {
         Team team = teamService.get(id);
         model.addAttribute("team", team);
-        return "new_team_form";
+        return "form_team";
     }
 
     @PostMapping("/process_new_team")

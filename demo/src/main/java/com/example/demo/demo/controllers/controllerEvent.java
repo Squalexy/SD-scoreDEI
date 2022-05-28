@@ -34,8 +34,8 @@ public class controllerEvent {
         if (ga.isPresent()){
             m.addAttribute("events", ga.get().getAllEvents());
             m.addAttribute("id", id);
-            return "events_list";
+            return "list_events";
         }
-        return "redirect:/games_list";
+        return "redirect:/games";
     }
 }

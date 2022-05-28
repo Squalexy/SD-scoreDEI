@@ -5,6 +5,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Getter;
 import lombok.Setter;
 import java.util.Date;
@@ -20,9 +23,13 @@ public class Event {
     private String name;
     private String description = "";
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date startEvent;
+    private String startEventTime;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date endEvent;
+    private String endEventTime;
 
     @ManyToOne()
     private Game game;
@@ -33,32 +40,36 @@ public class Event {
     public Event(){}
 
     // (a) start and end game
-    public Event(String name, Date startEvent, Date endEvent){
+    public Event(String name, Date startEvent,  String startEventTime, Date endEvent, String endEventTime){
         this.name = name;
         this.startEvent = startEvent;
+        this.startEventTime = startEventTime;
+        this.endEventTime = endEventTime;
         this.endEvent = endEvent;
-        this.description = String.format("[%s] Start: %s --- Ends: %s", this.startEvent, this.startEvent, this.endEvent);
+        this.description = String.format("[%s %s] Start: %s %s --- Ends: %s %s", this.startEvent, this.startEventTime, this.startEvent, this.startEventTime, this.endEvent, this.endEventTime);
     }
 
     // (b), (c) and (d) goals and cards
-    public Event(String name, Date startEvent, Player player){
+    public Event(String name, Date startEvent, String startEventTime, Player player){
         this.name = name;
         this.startEvent = startEvent;
+        this.startEventTime = startEventTime;
         this.player = player;
 
-        if (this.name == "b") this.description = String.format("[%s] Player %s scored a goal!", this.startEvent, this.player.getName());
-        else if (this.name == "c")this.description = String.format("[%s] Player %s received a yellow card!", this.startEvent, this.player.getName());
-        else if (this.name == "d")this.description = String.format("[%s] Player %s received a red card!", this.startEvent, this.player.getName());
+        if (this.name == "b") this.description = String.format("[%s %s] Player %s scored a goal!", this.startEvent, this.startEventTime, this.player.getName());
+        else if (this.name == "c")this.description = String.format("[%s %s] Player %s received a yellow card!", this.startEvent, this.startEventTime, this.player.getName());
+        else if (this.name == "d")this.description = String.format("[%s %s] Player %s received a red card!", this.startEvent, this.startEventTime, this.player.getName());
         
     }
 
     // (e) and (f)
-    public Event(String name, Date startEvent){
+    public Event(String name, Date startEvent, String startEventTime){
         this.name = name;
         this.startEvent = startEvent;
+        this.startEventTime = startEventTime;
 
-        if (this.name == "e") this.description = String.format("[%s] Game paused.", this.startEvent);
-        else if (this.name == "f") this.description = String.format("[%s] Game resumed.", this.startEvent);
+        if (this.name == "e") this.description = String.format("[%s %s] Game paused.", this.startEvent, this.startEventTime);
+        else if (this.name == "f") this.description = String.format("[%s %s] Game resumed.", this.startEvent, this.startEventTime);
     
     }
 

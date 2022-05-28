@@ -96,37 +96,37 @@ public class controllerDummyData {
         };
 
         Game[] mygames = {
-                new Game("Portugal", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2022-06-05 10:00:00"), "to be played"),
-                new Game("France", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2022-06-10 12:30:00"), "to be played"),
-                new Game("Germany", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2022-07-15 15:30:00"), "to be played")
+                new Game("Portugal", new SimpleDateFormat("yyyy-MM-dd").parse("2022-06-05"), "10:00", "unstarted"),
+                new Game("France", new SimpleDateFormat("yyyy-MM-dd").parse("2022-06-10"), "12:30", "unstarted"),
+                new Game("Germany", new SimpleDateFormat("yyyy-MM-dd").parse("2022-07-15"), "15:30", "unstarted")
             };
 
         Event[] myevents = {
-            new Event("a", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2022-06-05 10:00:00"), new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2022-06-05 11:30:00")),
-            new Event("a", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2022-06-10 12:30:00"), new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2022-06-10 14:00:00")),
+            new Event("a", new SimpleDateFormat("yyyy-MM-dd").parse("2022-06-05"), "10:00:00",  new SimpleDateFormat("yyyy-MM-dd").parse("2022-06-05"), "11:30:00"),
+            new Event("a", new SimpleDateFormat("yyyy-MM-dd").parse("2022-06-10"), "12:30:00",  new SimpleDateFormat("yyyy-MM-dd").parse("2022-06-10"), "14:00:00"),
 
             // goals
-            new Event("b", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2022-06-05 10:33:12"), myplayers[0]),
-            new Event("b", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2022-06-05 10:45:23"), myplayers[0]),
-            new Event("b", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2022-06-05 10:49:11"), myplayers[1]),
-            new Event("b", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2022-06-05 10:53:12"), myplayers[4]),
-            new Event("b", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2022-06-05 10:58:12"), myplayers[7]),
-            new Event("b", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2022-06-05 11:03:25"), myplayers[0]),
-            new Event("b", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2022-06-05 11:07:56"), myplayers[11]),
-            new Event("b", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2022-06-05 11:12:09"), myplayers[0]),
-            new Event("b", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2022-06-05 11:20:12"), myplayers[13]),
-            new Event("b", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2022-06-05 11:25:29"), myplayers[11]),
-            new Event("b", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2022-06-05 11:29:05"), myplayers[0]),
+            new Event("b", new SimpleDateFormat("yyyy-MM-dd").parse("2022-06-05"), "10:33:12",  myplayers[0]),
+            new Event("b", new SimpleDateFormat("yyyy-MM-dd").parse("2022-06-05"), "10:45:23",  myplayers[0]),
+            new Event("b", new SimpleDateFormat("yyyy-MM-dd").parse("2022-06-05"), "10:49:11",  myplayers[1]),
+            new Event("b", new SimpleDateFormat("yyyy-MM-dd").parse("2022-06-05"), "10:53:12",  myplayers[4]),
+            new Event("b", new SimpleDateFormat("yyyy-MM-dd").parse("2022-06-05"), "10:58:12",  myplayers[7]),
+            new Event("b", new SimpleDateFormat("yyyy-MM-dd").parse("2022-06-05"), "11:03:25",  myplayers[0]),
+            new Event("b", new SimpleDateFormat("yyyy-MM-dd").parse("2022-06-05"), "11:07:56",  myplayers[11]),
+            new Event("b", new SimpleDateFormat("yyyy-MM-dd").parse("2022-06-05"), "11:12:09",  myplayers[0]),
+            new Event("b", new SimpleDateFormat("yyyy-MM-dd").parse("2022-06-05"), "11:20:12",  myplayers[13]),
+            new Event("b", new SimpleDateFormat("yyyy-MM-dd").parse("2022-06-05"), "11:25:29",  myplayers[11]),
+            new Event("b", new SimpleDateFormat("yyyy-MM-dd").parse("2022-06-05"), "11:29:05",  myplayers[0]),
 
             // cards
-            new Event("c", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2022-06-05 10:13:12"), myplayers[5]),
-            new Event("c", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2022-06-05 10:15:23"), myplayers[9]),
-            new Event("d", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2022-06-05 10:29:11"), myplayers[5]),
-            new Event("c", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2022-06-05 10:58:12"), myplayers[14]),
+            new Event("c", new SimpleDateFormat("yyyy-MM-dd").parse("2022-06-05"), "10:13:12",  myplayers[5]),
+            new Event("c", new SimpleDateFormat("yyyy-MM-dd").parse("2022-06-05"), "10:15:23",  myplayers[9]),
+            new Event("d", new SimpleDateFormat("yyyy-MM-dd").parse("2022-06-05"), "10:29:11",  myplayers[5]),
+            new Event("c", new SimpleDateFormat("yyyy-MM-dd").parse("2022-06-05"), "10:58:12",  myplayers[14]),
 
             // interrupt and resume
-            new Event("f", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2022-06-05 11:00:00")),
-            new Event("e", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2022-06-05 10:45:00")),
+            new Event("f", new SimpleDateFormat("yyyy-MM-dd").parse("2022-06-05"), "11:00:00"),
+            new Event("e", new SimpleDateFormat("yyyy-MM-dd").parse("2022-06-05"), "10:45:00"),
 
         };
 

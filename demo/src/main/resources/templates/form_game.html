@@ -13,9 +13,9 @@
 
     <div class="container text-center">
         <div>
-            <h1>ADD NEW PLAYER</h1>
+            <h1>ADD/EDIT GAME</h1>
         </div>
-        <form th:action="@{/process_new_player}" th:object="${player}"
+        <form th:action="@{/process_new_game}" th:object="${game}"
             method="post" style="max-width: 600px; margin: 0 auto;">
         <div class="m-3">
 
@@ -23,7 +23,6 @@
                 <input type="hidden" th:field="*{id}">
                 <input type="hidden" th:field="*{scoreA}">
                 <input type="hidden" th:field="*{scoreB}">
-                <input type="hidden" th:field="*{state}">
             </div>
 
             <div class="form-group row">
@@ -34,24 +33,37 @@
             </div>
 
             <div class="form-group row">
-                <label class="col-4 col-form-label">Position: </label>
+                <label for="birthDate" class="col-4 col-form-label">Start date: </label>
                 <div class="col-8">
-                    <input type="text" th:field="*{position}" class="form-control" required minlength="2" maxlength="20"/>
+                    <input type="date" th:field="*{startDate}" class="form-control" required minlength="2" maxlength="20"/>
                 </div>
             </div>
 
             <div class="form-group row">
-                <label class="col-4 col-form-label">Start: </label>
+                <label for="birthDate" class="col-4 col-form-label">Start date time: </label>
                 <div class="col-8">
-                    <input type="date" name="birthDate" th:value="${#dates.format(player.birthDate,'yyyy/MM/dd HH:mm')}" class="form-control" required minlength="2" maxlength="20"/>
+                    <input type="time" th:field="*{startDateTime}" class="form-control" required minlength="2" maxlength="20"/>
                 </div>
             </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label">State: </label>
+                <div class="col-8">
+                    <select id="state" th:field="*{state}">
+                        <option th:value="unstarted">unstarted</option>
+                        <option th:value="ongoing">ongoing</option>
+                        <option th:value="paused">paused</option>
+                        <option th:value="finished">finished</option>
+                    </select>
+                </div>
+            </div>
+
 
             <div class="form-group row">
                 <label class="col-4 col-form-label">Team 1</label>
                 <div class="col-8">
                     <select id="listTeams" th:field="*{teams}" >
-                        <option th:each="team : ${listTeams}" th:text="${team.name}" th:value="${{team}}"/>
+                        <option th:each="t : ${listTeams}" th:value="${{t.id}}" th:text="${t.name}"/>
                     </select>
                 </div>
             </div>
@@ -60,13 +72,13 @@
                 <label class="col-4 col-form-label">Team 2</label>
                 <div class="col-8">
                     <select id="listTeams" th:field="*{teams}" >
-                        <option th:each="team : ${listTeams}" th:text="${team.name}" th:value="${{team}}"/>
+                        <option th:each="t : ${listTeams}" th:value="${{t.id}}" th:text="${t.name}"/>
                     </select>
                 </div>
             </div>
 
             <div>
-                <button type="submit" class="btn btn-primary">New player</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </div>
         </form>

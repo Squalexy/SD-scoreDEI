@@ -15,7 +15,7 @@ public class TeamService {
 
     public List <Team> getAllTeams(){
         List <Team> teamRecords = new ArrayList<>();
-        teamRepository.findAll().forEach(teamRecords::add);
+        teamRepository.retrieveTeams().forEach(teamRecords::add);
         return teamRecords;
     }
 

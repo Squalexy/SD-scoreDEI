@@ -30,9 +30,13 @@
                     <th>Game</th>
                     <th>Result</th>
                     <th>Location</th>
-                    <th>Starts</th>
+                    <th>Start date</th>
+                    <th>Start time</th>
                     <th>Events</th>
                     <th>State</th>
+                    <div sec:authorize="hasAnyAuthority('ADMIN')">
+                        <th>Edit</th>
+                    </div>
                 </tr>
             </thead>
             <tbody>
@@ -40,9 +44,14 @@
                     <td> <span th:text="${game.teams[0].name}">team1</span> vs <span th:text="${game.teams[1].name}">team2</span></td>
                     <td th:text="${game.scoreA} + '-' + ${game.scoreB}"></td>
                     <td th:text="${game.localization}">Location</td>
-                    <td th:text="${game.startDate}">Starts</td>
+                    <td th:text="${#dates.format(game.startDate, 'dd-MM-yyyy')}">Starts date</td>
+                    <td th:text="${game.startDateTime}">Starts time</td>
                     <td> <a th:href="@{games/events(id=${game.id})}">Events</a> </td>
                     <td th:text="${game.state}">State</td>
+                    <div sec:authorize="hasAnyAuthority('ADMIN')">
+                        <td><a th:href="@{'/games/edit/' + ${game.id}}">Edit</a></td>
+                    </div>
+
                 </tr>
             </tbody>
         </table>

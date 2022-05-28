@@ -15,7 +15,7 @@ public class PlayerService {
 
     public List <Player> getAllPlayers(){
         List <Player> playerRecords = new ArrayList<>();
-        playerRepository.findAll().forEach(playerRecords::add);
+        playerRepository.retrievePlayers().forEach(playerRecords::add);
         return playerRecords;
     }
 
@@ -26,6 +26,10 @@ public class PlayerService {
 
     public Optional<Player> getPlayer(int id) {
         return playerRepository.findById(id);
+    }
+    
+    public Player get(Integer id) {
+        return playerRepository.findById(id).get();
     }
     
 }

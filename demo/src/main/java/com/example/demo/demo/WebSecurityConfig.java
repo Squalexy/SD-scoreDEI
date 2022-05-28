@@ -52,8 +52,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .antMatchers("/registerUser",
                         "/registerTeam",
-                        "/editUser",
-                        "editUser(id=${user.id})")
+                        "/teams/edit/{id}",
+                        "/players/edit/{id}",
+                        "/users/edit/{id}",
+                        "/games/edit/{id}")
                 .hasAuthority("ADMIN")
                 .anyRequest().permitAll()
                 .and()

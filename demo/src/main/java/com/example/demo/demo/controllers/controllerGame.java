@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.demo.EventService;
 import com.example.demo.demo.GameService;
@@ -32,7 +34,7 @@ public class controllerGame {
     public String listGames(Model model) {
         List <Game> listGames = gameService.getAllGames();
         model.addAttribute("listGames", listGames);
-        return "games_list";
+        return "list_games";
     }
 
     @GetMapping("/registerGame")
@@ -40,7 +42,22 @@ public class controllerGame {
         List <Team> listTeams = teamService.getAllTeams();
         model.addAttribute("game", new Game());
         model.addAttribute("listTeams", listTeams);
-        return "new_game_form";
+        return "form_game";
+    }
+
+    @PostMapping("/process_new_game")
+    public String processRegister(Game game){
+        gameService.addGame(game);
+        return "redirect:/games";   
+    }
+
+    @GetMapping("/games/edit/{id}")
+    public String editUser(@PathVariable("id") Integer id, Model model) {
+        List <Team> listTeams = teamService.getAllTeams();
+        Game game = gameService.get(id);
+        model.addAttribute("game", game);
+        model.addAttribute("listTeams", listTeams);
+        return "form_game";
     }
 
 }

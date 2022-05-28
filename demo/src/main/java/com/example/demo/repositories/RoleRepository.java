@@ -1,6 +1,5 @@
 package com.example.demo.repositories;
 
-import com.example.demo.entities.Player;
 import com.example.demo.entities.Role;
 
 import org.springframework.data.jpa.repository.Query;

@@ -25,7 +25,9 @@
                 <tr>
                     <th>Name</th>
                     <th>Players</th>
-                    <th>Edit</th>
+                    <div sec:authorize="hasAnyAuthority('ADMIN')">
+                        <th>Edit</th>
+                    </div>
                 </tr>
             </thead>
             <tbody>
@@ -36,7 +38,9 @@
                                 <li th:text="${p.name}"></li>
                             </ul>
                         </td>
-                        <td><a th:href="@{'/teams/edit/' + ${team.id}}">Edit</a></td>
+                        <div sec:authorize="hasAnyAuthority('ADMIN')">
+                            <td><a th:href="@{'/teams/edit/' + ${team.id}}">Edit</a></td>
+                        </div>
                     </td>
                     </tr>
             </tbody>

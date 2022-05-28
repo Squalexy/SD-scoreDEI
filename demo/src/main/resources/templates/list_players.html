@@ -30,16 +30,22 @@
                     <th>Goals</th>
                     <th>Yellow cards</th>
                     <th>Red cards</th>
+                    <div sec:authorize="hasAnyAuthority('ADMIN')">
+                        <th>Edit</th>
+                    </div>
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="player: ${listPlayers}">
                     <td th:text="${player.name}"></td>
                     <td th:text="${player.position}"></td>
-                    <td th:text="${player.birthDate}"></td>
+                    <td th:text="${#dates.format(player.birthDate, 'dd-MM-yyyy')}"></td>
                     <td th:text="${player.nGoals}"></td>
                     <td th:text="${player.nYellow}"></td>
                     <td th:text="${player.nRed}"></td>
+                    <div sec:authorize="hasAnyAuthority('ADMIN')">
+                        <td><a th:href="@{'/players/edit/' + ${player.id}}">Edit</a></td>
+                    </div>
                 </tr>
             </tbody>
         </table>

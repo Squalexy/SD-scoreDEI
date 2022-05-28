@@ -34,7 +34,7 @@ public class controllerUser {
     @GetMapping("/registerUser")
     public String registrationForm(Model model){
         model.addAttribute("user", new User());
-        return "signup_form";
+        return "form_signup";
     }
 
     @PostMapping("/process_register")
@@ -55,7 +55,7 @@ public class controllerUser {
     public String listUsers(Model model) {
         List <User> listUsers = userService.getAllUsers();
         model.addAttribute("listUsers", listUsers);
-        return "users_list";
+        return "list_users";
     }
 
     @GetMapping("/users/edit/{id}")
@@ -64,7 +64,7 @@ public class controllerUser {
         List<Role> listRoles = userService.listRoles();
         model.addAttribute("user", user);
         model.addAttribute("listRoles", listRoles);
-        return "edit_user_form";
+        return "form_edit_user";
     }
 
     @PostMapping("/users/save")

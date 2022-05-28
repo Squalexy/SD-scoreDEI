@@ -17,7 +17,7 @@ public class Team {
     @Column(unique = true)
     private String name;
     
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(mappedBy= "team", cascade = CascadeType.ALL)
     private List <Player> players;
 
     @ManyToMany(cascade = CascadeType.ALL)
