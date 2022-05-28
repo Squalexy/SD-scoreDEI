@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="ISO-8859-1">
-    <title>List Teams</title>
+    <title>Teams list</title>
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
@@ -13,7 +13,7 @@
 
 <div class="container text-center">
 
-    <h1>List of Teams</h1>
+    <h1>TEAMS LIST</h1>
 
     <div sec:authorize="hasAnyAuthority('ADMIN')">
         <p><a href="/registerTeam" th:href="@{/registerTeam}" class="btn btn-large btn-success">New team</a></p>
@@ -25,6 +25,7 @@
                 <tr>
                     <th>Name</th>
                     <th>Players</th>
+                    <th>Edit</th>
                 </tr>
             </thead>
             <tbody>
@@ -35,6 +36,7 @@
                                 <li th:text="${p.name}"></li>
                             </ul>
                         </td>
+                        <td><a th:href="@{'/teams/edit/' + ${team.id}}">Edit</a></td>
                     </td>
                     </tr>
             </tbody>

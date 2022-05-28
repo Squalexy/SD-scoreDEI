@@ -1,6 +1,5 @@
 package com.example.demo.demo;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.*;
 import org.springframework.security.authentication.dao.*;
 import org.springframework.security.config.annotation.authentication.builders.*;
@@ -12,9 +11,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
-    @Autowired
-    private UserService userService;
 
     @Bean
     public UserDetailsService userDetailsService() {
@@ -48,14 +44,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/createData",
                         "/saveData",
                         "/index",
-                        "/register",
                         "/games",
+                        "/teams",
+                        "/players",
                         "/games/events",
                         "/games/events/{id}")
                 .permitAll()
-                .antMatchers("/manage",
-                        "/players",
-                        "/teams",
+                .antMatchers("/registerUser",
+                        "/registerTeam",
                         "/editUser",
                         "editUser(id=${user.id})")
                 .hasAuthority("ADMIN")

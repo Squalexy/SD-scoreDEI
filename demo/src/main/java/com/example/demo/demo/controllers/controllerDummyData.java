@@ -125,8 +125,9 @@ public class controllerDummyData {
             new Event("c", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2022-06-05 10:58:12"), myplayers[14]),
 
             // interrupt and resume
-            new Event("e", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2022-06-05 10:45:00")),
             new Event("f", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2022-06-05 11:00:00")),
+            new Event("e", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2022-06-05 10:45:00")),
+
         };
 
         myusers[0].addRole(myroles[1]);

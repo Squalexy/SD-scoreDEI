@@ -1,12 +1,11 @@
 package com.example.demo.entities;
 
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,8 +25,8 @@ public class Game {
     private int id;
 
     private String localization;
-    private int scoreA;
-    private int scoreB;
+    private int scoreA = 0;
+    private int scoreB = 0;
 
     @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm:ss")
     private Date startDate;
@@ -38,7 +37,7 @@ public class Game {
     @OneToMany(mappedBy = "game")
     private List <Event> events;
 
-    private String state;
+    private String state = "to be played";
 
     public Game(){}
 
@@ -68,5 +67,12 @@ public class Game {
     public String getGameName(){
         return "" + this.teams.get(0) + " vs " + this.teams.get(1);
     }
+
+
+    public List<Event> getAllEvents(){
+        Collections.sort(this.events, Comparator.comparing(Event::getStartEvent));
+        return this.events;
+    }
+
 
 }

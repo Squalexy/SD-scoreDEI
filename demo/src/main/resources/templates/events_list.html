@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
   <head>
+    <meta http-equiv="refresh" content="3">
     <meta charset="ISO-8859-1" />
-    <title>List Events</title>
+    <title>Events List</title>
     <link
       rel="stylesheet"
       type="text/css"
@@ -20,7 +21,7 @@
 
     <div class="container text-center">
 
-      <h1>List of Events</h1>
+      <h1>EVENTS LIST</h1>
 
       <div sec:authorize="hasAnyAuthority('ADMIN', 'USER')">
         <td><p><a th:href="@{viewGames/addEvent(id=${id})}" class="btn btn-large btn-success">Add Event</a></p></td>

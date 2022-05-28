@@ -31,7 +31,7 @@ public class controllerUser {
     @Autowired
     UserService userService;
 
-    @GetMapping("/register")
+    @GetMapping("/registerUser")
     public String registrationForm(Model model){
         model.addAttribute("user", new User());
         return "signup_form";
@@ -43,7 +43,7 @@ public class controllerUser {
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
         userService.registerDefaultUser(user);
-        return "register_success";   
+        return "redirect:/users";   
     }
 
     @GetMapping("/logout")
@@ -64,7 +64,7 @@ public class controllerUser {
         List<Role> listRoles = userService.listRoles();
         model.addAttribute("user", user);
         model.addAttribute("listRoles", listRoles);
-        return "user_form";
+        return "edit_user_form";
     }
 
     @PostMapping("/users/save")

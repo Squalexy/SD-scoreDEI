@@ -2,8 +2,6 @@ package com.example.demo.entities;
  
 import javax.persistence.*;
 
-import org.hibernate.annotations.FetchProfile.FetchOverride;
-
 import lombok.Getter;
 import lombok.Setter;
  

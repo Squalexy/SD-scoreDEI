@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>New Player</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <div th:replace="navbar :: navbar"></div>
+
+    <div class="container text-center">
+        <div>
+            <h1>ADD NEW PLAYER</h1>
+        </div>
+        <form th:action="@{/process_new_player}" th:object="${player}"
+            method="post" style="max-width: 600px; margin: 0 auto;">
+        <div class="m-3">
+
+            <div>
+                <input type="hidden" th:field="*{id}">
+                <input type="hidden" th:field="*{scoreA}">
+                <input type="hidden" th:field="*{scoreB}">
+                <input type="hidden" th:field="*{state}">
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Location: </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{localization}" class="form-control" required minlength="2" maxlength="20"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Position: </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{position}" class="form-control" required minlength="2" maxlength="20"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Start: </label>
+                <div class="col-8">
+                    <input type="date" name="birthDate" th:value="${#dates.format(player.birthDate,'yyyy/MM/dd HH:mm')}" class="form-control" required minlength="2" maxlength="20"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Team 1</label>
+                <div class="col-8">
+                    <select id="listTeams" th:field="*{teams}" >
+                        <option th:each="team : ${listTeams}" th:text="${team.name}" th:value="${{team}}"/>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Team 2</label>
+                <div class="col-8">
+                    <select id="listTeams" th:field="*{teams}" >
+                        <option th:each="team : ${listTeams}" th:text="${team.name}" th:value="${{team}}"/>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="submit" class="btn btn-primary">New player</button>
+            </div>
+        </div>
+        </form>
+    </div>
+</body>
+</html>

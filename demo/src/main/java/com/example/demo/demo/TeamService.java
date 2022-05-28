@@ -28,4 +28,7 @@ public class TeamService {
         return teamRepository.findById(id);
     }
     
+    public Team get(Integer id) {
+        return teamRepository.findById(id).get();
+    }
 }
