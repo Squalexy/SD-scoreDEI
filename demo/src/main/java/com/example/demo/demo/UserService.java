@@ -34,6 +34,8 @@ public class UserService {
         user.addRole(roleUser);
         userRepository.save(user);
     }
+
+
     
     /*
     public List<Role> listRoles() {
@@ -45,6 +47,30 @@ public class UserService {
 
     public User get(Integer id) {
         return userRepository.findById(id).get();
+    }
+
+    public int getEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
+    public int getUsername(String username) {
+        return userRepository.findByUsername(username);
+    }
+
+    public int getTelephone(String telephone) {
+        return userRepository.findByTelephone(telephone);
+    }
+
+    public int getEmailEdit(String email, String username) {
+        return userRepository.findByEmailEdit(email, username);
+    }
+
+    public int getUsernameEdit(String username) {
+        return userRepository.findByUsernameEdit(username);
+    }
+
+    public int getTelephoneEdit(String telephone, String username) {
+        return userRepository.findByTelephoneEdit(telephone, username);
     }
 
     public List<Role> listRoles() {
