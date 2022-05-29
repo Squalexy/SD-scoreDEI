@@ -31,5 +31,11 @@ public class PlayerService {
     public Player get(Integer id) {
         return playerRepository.findById(id).get();
     }
+
+    public List<Player> getBestPlayers(){
+        List <Player> players = new ArrayList<>();
+        playerRepository.findBestPlayers().forEach(players::add);
+        return players;
+    }
     
 }

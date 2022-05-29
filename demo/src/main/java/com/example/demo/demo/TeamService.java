@@ -31,4 +31,5 @@ public class TeamService {
     public Team get(Integer id) {
         return teamRepository.findById(id).get();
     }
+
 }

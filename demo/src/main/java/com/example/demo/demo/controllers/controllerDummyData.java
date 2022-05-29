@@ -96,7 +96,7 @@ public class controllerDummyData {
         };
 
         Game[] mygames = {
-                new Game("Portugal", new SimpleDateFormat("yyyy-MM-dd").parse("2022-06-05"), "10:00", "unstarted"),
+                new Game("Portugal", new SimpleDateFormat("yyyy-MM-dd").parse("2022-06-05"), "10:00", "finished"),
                 new Game("France", new SimpleDateFormat("yyyy-MM-dd").parse("2022-06-10"), "12:30", "unstarted"),
                 new Game("Germany", new SimpleDateFormat("yyyy-MM-dd").parse("2022-07-15"), "15:30", "unstarted")
             };
