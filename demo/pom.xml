@@ -115,6 +115,18 @@
 			<artifactId>spring-boot-starter-validation</artifactId> 
 		</dependency>
 
+		<dependency>
+			<groupId>com.konghq</groupId>
+			<artifactId>unirest-java</artifactId>
+			<version>3.13.6</version>
+		</dependency>
+
+	 	<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.9.0</version>
+		  </dependency>
+
 	</dependencies>
 
 	<build>
