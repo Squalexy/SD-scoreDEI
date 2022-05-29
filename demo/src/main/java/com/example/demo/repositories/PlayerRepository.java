@@ -9,4 +9,7 @@ public interface PlayerRepository extends CrudRepository<Player, Integer> {
 
     @Query("SELECT p FROM Player p ORDER BY p.name ASC")
     public List<Player> retrievePlayers();
+
+    @Query("SELECT p FROM Player p WHERE p.nGoals = (SELECT MAX(nGoals) FROM Player)")
+    public List<Player> findBestPlayers();
 }    
