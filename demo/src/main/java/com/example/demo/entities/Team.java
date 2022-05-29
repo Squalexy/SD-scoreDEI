@@ -44,8 +44,8 @@ public class Team {
     public int countVictories() {
         int victories = 0;
         for (Game g : this.games) {
-            if (g.getTeams().get(0).name == this.name && g.getScoreA() > g.getScoreB() && g.getState() == "finished") victories ++;
-            else if (g.getTeams().get(1).name == this.name && g.getScoreB() > g.getScoreA() && g.getState() == "finished") victories ++;
+            if (g.getTeams().get(0).name == this.name && g.getScoreA() > g.getScoreB() && g.getState().equals("finished")) victories ++;
+            else if (g.getTeams().get(1).name == this.name && g.getScoreB() > g.getScoreA() && g.getState().equals("finished")) victories ++;
         }
         return victories;
     }
@@ -53,8 +53,8 @@ public class Team {
     public int countDefeats() {
         int victories = 0;
         for (Game g : this.games) {
-            if (g.getTeams().get(0).name == this.name && g.getScoreA() < g.getScoreB() && g.getState() == "finished") victories ++;
-            else if (g.getTeams().get(1).name == this.name && g.getScoreB() < g.getScoreA() && g.getState() == "finished") victories ++;
+            if (g.getTeams().get(0).name == this.name && g.getScoreA() < g.getScoreB() && g.getState().strip().equals("finished")) victories ++;
+            else if (g.getTeams().get(1).name == this.name && g.getScoreB() < g.getScoreA() && g.getState().strip().equals("finished")) victories ++;
         }
         return victories;
     }
@@ -62,14 +62,20 @@ public class Team {
     public int countSame() {
         int victories = 0;
         for (Game g : this.games) {
-            if (g.getTeams().get(0).name == this.name && g.getScoreA() == g.getScoreB() && g.getState() == "finished") victories ++;
-            else if (g.getTeams().get(1).name == this.name && g.getScoreB() == g.getScoreA() && g.getState() == "finished") victories ++;
+            if (g.getTeams().get(0).name == this.name && g.getScoreA() == g.getScoreB() && g.getState().strip().equals("finished")) victories ++;
+            else if (g.getTeams().get(1).name == this.name && g.getScoreB() == g.getScoreA() && g.getState().strip().equals("finished")) victories ++;
         }
         return victories;
     }
 
     public int countGames() {
-        return this.games.size();
+        int count = 0;
+        for (Game game: this.games){
+            System.out.println("state:" + game.getState().strip());
+            if (game.getState().equals("finished")) count ++;
+        }
+        System.out.println("count:" + count);
+        return count;
     }
 
 }

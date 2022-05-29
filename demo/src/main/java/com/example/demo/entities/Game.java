@@ -40,7 +40,7 @@ public class Game {
     @OneToMany(mappedBy = "game", cascade = CascadeType.ALL)
     private List <Event> events;
 
-    private String state = "to be played";
+    private String state;
 
     public Game(){}
 
@@ -78,5 +78,7 @@ public class Game {
         return this.events;
     }
 
-
+    public String getState(){
+        return this.state;
+    }
 }
