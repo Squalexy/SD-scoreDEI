@@ -61,4 +61,16 @@ public class Player {
 
     }
 
+    public void addGoal(){
+        this.nGoals ++;
+    }
+
+    public void addYellow(){
+        this.nYellow ++;
+    }
+
+    public void addRed(){
+        this.nRed ++;
+    }
+
 }

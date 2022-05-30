@@ -71,10 +71,8 @@ public class Team {
     public int countGames() {
         int count = 0;
         for (Game game: this.games){
-            System.out.println("state:" + game.getState().strip());
             if (game.getState().equals("finished")) count ++;
         }
-        System.out.println("count:" + count);
         return count;
     }
 

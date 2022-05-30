@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>New Player</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <div th:replace="navbar :: navbar"></div>
+
+    <div class="container text-center">
+
+        <div>
+            <h1>NEW EVENT</h1>
+        </div>
+
+        <form th:action="@{/process_new_event}" th:object="${event}" method="post" style="max-width: 600px; margin: 0 auto;">
+            <div class="m-3">
+                <div>
+                    <h1>ADD START AND END</h1>
+                </div>
+
+                <div>
+                    <input type="hidden" th:field="*{id}">
+                    <input type="hidden" th:field="*{name}">
+                    <input type="hidden" th:field="*{description}">
+                    <input type="hidden" th:field="*{game}">
+                    <input type="hidden" th:field="*{player}">
+                </div>
+
+                <div class="form-group row">
+                    <label for="birthDate" class="col-4 col-form-label">Start date: </label>
+                    <div class="col-8">
+                        <input type="date" th:field="*{startEvent}" class="form-control" required minlength="2" maxlength="20"/>
+                    </div>
+                </div>
+    
+                <div class="form-group row">
+                    <label for="birthDate" class="col-4 col-form-label">Start date time: </label>
+                    <div class="col-8">
+                        <input type="time" th:field="*{startEventTime}" class="form-control" required minlength="2" maxlength="20"/>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="birthDate" class="col-4 col-form-label">End date: </label>
+                    <div class="col-8">
+                        <input type="date" th:field="*{endEvent}" class="form-control" required minlength="2" maxlength="20"/>
+                    </div>
+                </div>
+    
+                <div class="form-group row">
+                    <label for="birthDate" class="col-4 col-form-label">End date time: </label>
+                    <div class="col-8">
+                        <input type="time" th:field="*{endEventTime}" class="form-control" required minlength="2" maxlength="20"/>
+                    </div>
+                </div>
+
+                <div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+
+        <!---->
+
+
+
+        <form th:action="@{/process_new_event}" th:object="${event}" method="post" style="max-width: 600px; margin: 0 auto;">
+            <div class="m-3">
+
+                <div>
+                    <h1>ADD GOAL</h1>
+                </div>
+
+                <div>
+                    <input type="hidden" th:field="*{id}">
+                    <input type="hidden" name="name" value="b">
+                    <input type="hidden" th:field="*{description}">
+                    <input type="hidden" th:field="*{endEvent}">
+                    <input type="hidden" th:field="*{endEventTime}">
+                    <input type="hidden" th:field="*{game}">
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Player</label>
+                    <div class="col-8">
+                        <select id="listPlayers" th:field="*{player}" >
+                            <option th:each="p : ${listPlayers}" th:value="${{p.id}}" th:text="${p.name}"/>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="birthDate" class="col-4 col-form-label">Start date: </label>
+                    <div class="col-8">
+                        <input type="date" th:field="*{startEvent}" class="form-control" required minlength="2" maxlength="20"/>
+                    </div>
+                </div>
+    
+                <div class="form-group row">
+                    <label for="birthDate" class="col-4 col-form-label">Start date time: </label>
+                    <div class="col-8">
+                        <input type="time" th:field="*{startEventTime}" class="form-control" required minlength="2" maxlength="20"/>
+                    </div>
+                </div>
+
+                <div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+
+        <!---->
+
+         <form th:action="@{/process_new_event}" th:object="${event}" method="post" style="max-width: 600px; margin: 0 auto;">
+            <div class="m-3">
+
+                <div>
+                    <h1>YELLOW CARDS</h1>
+                </div>
+
+                <div>
+                    <input type="hidden" th:field="*{id}">
+                    <input type="hidden" name="name" value="c">
+                    <input type="hidden" th:field="*{description}">
+                    <input type="hidden" th:field="*{endEvent}">
+                    <input type="hidden" th:field="*{endEventTime}">
+                    <input type="hidden" th:field="*{game}">
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Player</label>
+                    <div class="col-8">
+                        <select id="listPlayers" th:field="*{player}" >
+                            <option th:each="p : ${listPlayers}" th:value="${{p.id}}" th:text="${p.name}"/>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="birthDate" class="col-4 col-form-label">Start date: </label>
+                    <div class="col-8">
+                        <input type="date" th:field="*{startEvent}" class="form-control" required minlength="2" maxlength="20"/>
+                    </div>
+                </div>
+    
+                <div class="form-group row">
+                    <label for="birthDate" class="col-4 col-form-label">Start date time: </label>
+                    <div class="col-8">
+                        <input type="time" th:field="*{startEventTime}" class="form-control" required minlength="2" maxlength="20"/>
+                    </div>
+                </div>
+
+                <div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+
+        <!---->
+
+         <form th:action="@{/process_new_event}" th:object="${event}" method="post" style="max-width: 600px; margin: 0 auto;">
+            <div class="m-3">
+
+                <div>
+                    <h1>RED CARDS</h1>
+                </div>
+
+                <div>
+                    <input type="hidden" th:field="*{id}">
+                    <input type="hidden" name="name" value="d">
+                    <input type="hidden" th:field="*{description}">
+                    <input type="hidden" th:field="*{endEvent}">
+                    <input type="hidden" th:field="*{endEventTime}">
+                    <input type="hidden" th:field="*{game}">
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Player</label>
+                    <div class="col-8">
+                        <select id="listPlayers" th:field="*{player}" >
+                            <option th:each="p : ${listPlayers}" th:value="${{p.id}}" th:text="${p.name}"/>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="birthDate" class="col-4 col-form-label">Start date: </label>
+                    <div class="col-8">
+                        <input type="date" th:field="*{startEvent}" class="form-control" required minlength="2" maxlength="20"/>
+                    </div>
+                </div>
+    
+                <div class="form-group row">
+                    <label for="birthDate" class="col-4 col-form-label">Start date time: </label>
+                    <div class="col-8">
+                        <input type="time" th:field="*{startEventTime}" class="form-control" required minlength="2" maxlength="20"/>
+                    </div>
+                </div>
+
+                <div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+
+        <!---->
+
+        <form th:action="@{/process_new_event}" th:object="${event}" method="post" style="max-width: 600px; margin: 0 auto;">
+            <div class="m-3">
+
+                <div>
+                    <h1>PAUSE GAME</h1>
+                </div>
+
+                <div>
+                    <input type="hidden" th:field="*{id}">
+                    <input type="hidden" name="name" value="e">
+                    <input type="hidden" th:field="*{description}">
+                    <input type="hidden" th:field="*{endEvent}">
+                    <input type="hidden" th:field="*{endEventTime}">
+                    <input type="hidden" th:field="*{game}">
+                    <input type="hidden" th:field="*{player}">
+                </div>
+
+                <div class="form-group row">
+                    <label for="birthDate" class="col-4 col-form-label">Start date: </label>
+                    <div class="col-8">
+                        <input type="date" th:field="*{startEvent}" class="form-control" required minlength="2" maxlength="20"/>
+                    </div>
+                </div>
+    
+                <div class="form-group row">
+                    <label for="birthDate" class="col-4 col-form-label">Start date time: </label>
+                    <div class="col-8">
+                        <input type="time" th:field="*{startEventTime}" class="form-control" required minlength="2" maxlength="20"/>
+                    </div>
+                </div>
+
+                <div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+
+        <!---->
+
+        <form th:action="@{/process_new_event}" th:object="${event}" method="post" style="max-width: 600px; margin: 0 auto;">
+            <div class="m-3">
+
+                <div>
+                    <h1>RESUME GAME</h1>
+                </div>
+
+                <div>
+                    <input type="hidden" th:field="*{id}">
+                    <input type="hidden" name="name" value="f">
+                    <input type="hidden" th:field="*{description}">
+                    <input type="hidden" th:field="*{endEvent}">
+                    <input type="hidden" th:field="*{endEventTime}">
+                    <input type="hidden" th:field="*{game}">
+                    <input type="hidden" th:field="*{player}">
+                    <input type="hidden" name="state" value="resumed">
+                </div>
+
+                <div class="form-group row">
+                    <label for="birthDate" class="col-4 col-form-label">Start date: </label>
+                    <div class="col-8">
+                        <input type="date" th:field="*{startEvent}" class="form-control" required minlength="2" maxlength="20"/>
+                    </div>
+                </div>
+    
+                <div class="form-group row">
+                    <label for="birthDate" class="col-4 col-form-label">Start date time: </label>
+                    <div class="col-8">
+                        <input type="time" th:field="*{startEventTime}" class="form-control" required minlength="2" maxlength="20"/>
+                    </div>
+                </div>
+
+                <div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</body>
+</html>

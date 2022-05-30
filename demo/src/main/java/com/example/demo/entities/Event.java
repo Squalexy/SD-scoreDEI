@@ -56,9 +56,9 @@ public class Event {
         this.startEventTime = startEventTime;
         this.player = player;
 
-        if (this.name == "b") this.description = String.format("[%s %s] Player %s scored a goal!", this.startEvent, this.startEventTime, this.player.getName());
-        else if (this.name == "c")this.description = String.format("[%s %s] Player %s received a yellow card!", this.startEvent, this.startEventTime, this.player.getName());
-        else if (this.name == "d")this.description = String.format("[%s %s] Player %s received a red card!", this.startEvent, this.startEventTime, this.player.getName());
+        if (this.name.equals("b")) this.description = String.format("[%s %s] Player %s scored a goal!", this.startEvent, this.startEventTime, this.player.getName());
+        else if (this.name.equals("c"))this.description = String.format("[%s %s] Player %s received a yellow card!", this.startEvent, this.startEventTime, this.player.getName());
+        else if (this.name.equals("d"))this.description = String.format("[%s %s] Player %s received a red card!", this.startEvent, this.startEventTime, this.player.getName());
         
     }
 
@@ -68,10 +68,20 @@ public class Event {
         this.startEvent = startEvent;
         this.startEventTime = startEventTime;
 
-        if (this.name == "e") this.description = String.format("[%s %s] Game paused.", this.startEvent, this.startEventTime);
-        else if (this.name == "f") this.description = String.format("[%s %s] Game resumed.", this.startEvent, this.startEventTime);
+        if (this.name.equals("e")) this.description = String.format("[%s %s] Game paused.", this.startEvent, this.startEventTime);
+        else if (this.name.equals("f")) this.description = String.format("[%s %s] Game resumed.", this.startEvent, this.startEventTime);
     
     }
 
 
+    public void setTheDescription(){
+
+        if (this.name.equals("a")) this.description = String.format("[%s %s] Start: %s %s --- Ends: %s %s", this.startEvent, this.startEventTime, this.startEvent, this.startEventTime, this.endEvent, this.endEventTime);
+        else if (this.name.equals("b")) this.description = String.format("[%s %s] Player %s scored a goal!", this.startEvent, this.startEventTime, this.player.getName());
+        else if (this.name.equals("c"))this.description = String.format("[%s %s] Player %s received a yellow card!", this.startEvent, this.startEventTime, this.player.getName());
+        else if (this.name.equals("d"))this.description = String.format("[%s %s] Player %s received a red card!", this.startEvent, this.startEventTime, this.player.getName());
+        else if (this.name.equals("e")) this.description = String.format("[%s %s] Game paused.", this.startEvent, this.startEventTime);
+        else if (this.name.equals("f")) this.description = String.format("[%s %s] Game resumed.", this.startEvent, this.startEventTime);
+
+    }
 }

@@ -57,6 +57,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/users/edit/{id}",
                         "/games/edit/{id}")
                 .hasAuthority("ADMIN")
+                .antMatchers("/games/addEvent/{id}")
+                .hasAnyAuthority("USER", "ADMIN")
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
