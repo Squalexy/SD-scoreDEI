@@ -54,6 +54,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/registerTeam",
                         "/teams/edit/{id}",
                         "/players/edit/{id}",
+                        "/users",
                         "/users/edit/{id}",
                         "/games/edit/{id}")
                 .hasAuthority("ADMIN")
