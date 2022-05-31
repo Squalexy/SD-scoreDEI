@@ -28,17 +28,19 @@
             </p>
         </div>
 
-        <form th:action="@{/saveData}" method="post">
-            <div="form-row">
-                <button type="submit">Create Dummy Data</button>
-            </div>
-        </form>
+        <div>
+            <form th:action="@{/saveData}" method="post">
+                <div="form-row">
+                    <button type="submit">Create Dummy Data</button>
+                </div>
+            </form>
 
-        <form th:action="@{/createFromREST}" method="post">
-            <div="form-row">
-                <button type="submit">Create Data from REST</button>
-            </div>
-        </form>
+            <form th:action="@{/createFromREST}" method="post">
+                <div="form-row">
+                    <button type="submit">Create Data from REST</button>
+                </div>
+            </form>
+        </div>
 
     </div>
      
