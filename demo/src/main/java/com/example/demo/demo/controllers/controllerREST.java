@@ -39,6 +39,7 @@ public class controllerREST {
     TeamService teamService;
 
     private String apiKey = "3ae8759502ecadb1a50fd386f98d154c";
+    private int teamLimit = 9;
 
     @PostMapping("/createFromREST")
     public String createFromREST() throws IOException, ParseException{
@@ -49,7 +50,7 @@ public class controllerREST {
         HttpResponse<JsonNode> response =
         Unirest.get("https://v3.football.api-sports.io/teams")
         .queryString("league", 94)
-        .queryString("season", 2021)
+        .queryString("season", 2020)
         .header("x-rapidapi-host", "v3.football.api-sports.io")
         .header("x-rapidapi-key", apiKey)
         .asJson();
@@ -57,7 +58,7 @@ public class controllerREST {
         JsonObject obj = JsonParser.parseString(response.getBody().toString()).getAsJsonObject();
         JsonArray arr = obj.getAsJsonArray("response");
 
-        for (int i = 0; i < arr.size(); i++){
+        for (int i = 0; i < teamLimit; i++){
             JsonObject team = arr.get(i).getAsJsonObject().get("team").getAsJsonObject();
             
             String teamName = team.get("name").getAsString();
@@ -71,7 +72,7 @@ public class controllerREST {
             Team curTeam = teams.get(i);
 
             response = Unirest.get("https://v3.football.api-sports.io/players")
-            .queryString("season", 2021)
+            .queryString("season", 2020)
             .queryString("team", id)
             .header("x-rapidapi-host", "v3.football.api-sports.io")
             .header("x-rapidapi-key", apiKey)
@@ -86,12 +87,12 @@ public class controllerREST {
 
                 String playerName = player.get("name").getAsString();
                 String birthStr = player.get("birth").getAsJsonObject().get("date").toString().replace("\"", "");
-                System.out.println(playerName + " from " + curTeam.getName()+ "(" + Integer.toString(id) + ")" + " was born in " + birthStr);
                 Date birthdate = new SimpleDateFormat("yyyy-MM-dd").parse(birthStr);
                 String position = stats.get("games").getAsJsonObject().get("position").getAsString();
 
                 Player p = new Player(playerName, position, birthdate);
                 curTeam.addPlayer(p);
+                p.setTeam(curTeam);
                 players.add(p);
             }
         }
