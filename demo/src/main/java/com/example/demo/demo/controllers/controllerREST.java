@@ -4,8 +4,6 @@ import com.example.demo.demo.EventService;
 import com.example.demo.demo.GameService;
 import com.example.demo.demo.PlayerService;
 import com.example.demo.demo.TeamService;
-import com.example.demo.entities.Event;
-import com.example.demo.entities.Game;
 import com.example.demo.entities.Player;
 import com.example.demo.entities.Team;
 
