@@ -50,7 +50,7 @@
             <div class="form-group row">
                 <label class="col-4 col-form-label">State: </label>
                 <div class="col-8">
-                    <select id="state" th:field="*{state}">
+                    <select id="state" th:field="*{state}" required>
                         <option th:value="unstarted">unstarted</option>
                         <option th:value="ongoing">ongoing</option>
                         <option th:value="paused">paused</option>
@@ -63,7 +63,7 @@
             <div class="form-group row">
                 <label class="col-4 col-form-label">Team 1</label>
                 <div class="col-8">
-                    <select id="listTeams" th:field="*{teams}" >
+                    <select id="listTeams" th:field="*{teams}" required>
                         <option th:each="t : ${listTeams}" th:value="${{t.id}}" th:text="${t.name}"/>
                     </select>
                 </div>
@@ -72,7 +72,7 @@
             <div class="form-group row">
                 <label class="col-4 col-form-label">Team 2</label>
                 <div class="col-8">
-                    <select id="listTeams" th:field="*{teams}" >
+                    <select id="listTeams" th:field="*{teams}" required>
                         <option th:each="t : ${listTeams}" th:value="${{t.id}}" th:text="${t.name}"/>
                     </select>
                 </div>

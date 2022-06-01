@@ -88,7 +88,7 @@
                 <div class="form-group row">
                     <label class="col-4 col-form-label">Player</label>
                     <div class="col-8">
-                        <select id="listPlayers" th:field="*{player}" >
+                        <select id="listPlayers" th:field="*{player}" required>
                             <option th:each="p : ${listPlayers}" th:value="${{p.id}}" th:text="${p.name}"/>
                         </select>
                     </div>
@@ -135,7 +135,7 @@
                 <div class="form-group row">
                     <label class="col-4 col-form-label">Player</label>
                     <div class="col-8">
-                        <select id="listPlayers" th:field="*{player}" >
+                        <select id="listPlayers" th:field="*{player}" required>
                             <option th:each="p : ${listPlayers}" th:value="${{p.id}}" th:text="${p.name}"/>
                         </select>
                     </div>
@@ -182,7 +182,7 @@
                 <div class="form-group row">
                     <label class="col-4 col-form-label">Player</label>
                     <div class="col-8">
-                        <select id="listPlayers" th:field="*{player}" >
+                        <select id="listPlayers" th:field="*{player}" required>
                             <option th:each="p : ${listPlayers}" th:value="${{p.id}}" th:text="${p.name}"/>
                         </select>
                     </div>
